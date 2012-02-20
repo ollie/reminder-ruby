@@ -13,7 +13,7 @@ If you have a Mac, it can be hooked into [GeekTool](http://itunes.apple.com/cz/a
     $ rake db:create db:migrate                          # Create and migrate a SQLite3 database
     $ cp lib/tasks/data.rake.sample lib/tasks/data.rake  # Prepare your data file
     # Edit your data file lib/tasks/data.rake
-    $ rake db:data:Load                                  # Load your data into database
+    $ rake db:data:load                                  # Load your data into database
     $ rake run                                           # Run the application
 
 ## Tasks
