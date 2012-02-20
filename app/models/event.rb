@@ -65,6 +65,8 @@ class Event < ActiveRecord::Base
   end
 
   def name_with_kind
-    "#{ self.name } #{ self.kind }"
+    out = "#{ self.name } #{ self.kind }"
+    out += " (#{ Time.now.year - self.year })" if self.birthday?
+    out
   end
 end

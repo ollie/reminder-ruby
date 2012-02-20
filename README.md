@@ -1,5 +1,5 @@
 # Reminder
-This is a simple Ruby (1.9.3+) command-line application to display upcoming and past events like birthdays, namedays and payments.
+This is a simple Ruby (1.9.3+) command-line application to display upcoming and past events like birthdays, namedays and payments. It looks two months ahead and one month back.
 
 This isn't really an application, it's just a bunch of scripts to print out events. It doesn't let you do anything. Data manipulation is done via editing tha data.rake file and reloading the data from scratch (i.e. running `rake db:recreate db:data:load`).
 
@@ -33,19 +33,19 @@ If you have a Mac, it can be hooked into [GeekTool](http://itunes.apple.com/cz/a
 ## Running the application
     $ cd path/to/your/cloned/repo
     $ rake run
-    +----------------+-----------------------+
-    |     Birthdays, namedays, payments…     |
-    +----------------+-----------------------+
-    | 2012-04-25     | Theo nameday          |
-    | 2012-03-13     | Vanessa nameday       |
-    | 2012-03-12     | hosting payment       |
-    | 2012-03-11     | Something payment     |
-    | 2012-02-27     | Cousin Cliff birthday |
-    +----------------+-----------------------+
-    | 2012-02-20     | Today                 |
-    +----------------+-----------------------+
-    | 2012-01-07     | Cousin Clair birthday |
-    +----------------+-----------------------+
+    +----------------+----------------------------+
+    |       Birthdays, namedays, payments…        |
+    +----------------+----------------------------+
+    | 2012-04-25     | Theo nameday               |
+    | 2012-03-13     | Vanessa nameday            |
+    | 2012-03-12     | hosting payment            |
+    | 2012-03-11     | Something payment          |
+    | 2012-02-27     | Cousin Cliff birthday (32) |
+    +----------------+----------------------------+
+    | 2012-02-20     | Today                      |
+    +----------------+----------------------------+
+    | 2012-01-07     | Cousin Clair birthday (22) |
+    +----------------+----------------------------+
 
 ## Editing your data
 Open `lib/tasks/data.rake` in your text editor and modify it at your will. This is sample data:
@@ -95,19 +95,19 @@ Currently supported locales are :en and :cs, no problem adding more. Just edit t
 And run the application
 
     $ rake run
-    +--------------+-------------------------+
-    |      Narozeniny, svátky, platby…       |
-    +--------------+-------------------------+
-    | 25. 04. 2012 | Theo svátek             |
-    | 13. 03. 2012 | Vanessa svátek          |
-    | 12. 03. 2012 | hosting platba          |
-    | 11. 03. 2012 | Something platba        |
-    | 27. 02. 2012 | Cousin Cliff narozeniny |
-    +--------------+-------------------------+
-    | 20. 02. 2012 | Dnes                    |
-    +--------------+-------------------------+
-    | 07. 01. 2012 | Cousin Clair narozeniny |
-    +--------------+-------------------------+
+    +--------------+------------------------------+
+    |         Narozeniny, svátky, platby…         |
+    +--------------+------------------------------+
+    | 25. 04. 2012 | Theo svátek                  |
+    | 13. 03. 2012 | Vanessa svátek               |
+    | 12. 03. 2012 | hosting platba               |
+    | 11. 03. 2012 | Something platba             |
+    | 27. 02. 2012 | Cousin Cliff narozeniny (32) |
+    +--------------+------------------------------+
+    | 20. 02. 2012 | Dnes                         |
+    +--------------+------------------------------+
+    | 07. 01. 2012 | Cousin Clair narozeniny (22) |
+    +--------------+------------------------------+
 
 ## Gems used
     gem 'sqlite3'
