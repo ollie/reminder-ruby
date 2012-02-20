@@ -5,6 +5,17 @@ This isn't really an application, it's just a bunch of scripts to print out even
 
 If you have a Mac, it can be hooked into [GeekTool](http://itunes.apple.com/cz/app/geektool/id456877552?mt=12) and displayed on your desktop.
 
+## Installation
+    $ git clone git://github.com/ollie/reminder.git      # Clone this repo
+    $ cd reminder                                        # Get in
+    $ bundle install                                     # Install required RubyGems
+    $ cp config/database.yml.example config/database.yml # Set your database connections
+    $ rake db:create db:migrate                          # Create and migrate a SQLite3 database
+    $ cp lib/tasks/data.rake.sample lib/tasks/data.rake  # Prepare your data file
+    # Edit your data file lib/tasks/data.rake
+    $ rake db:data:Load                                  # Load your data into database
+    $ rake run                                           # Run the application
+
 ## Tasks
     $ rake -T
     rake c              # Start the console
@@ -18,16 +29,6 @@ If you have a Mac, it can be hooked into [GeekTool](http://itunes.apple.com/cz/a
     rake g:migration    # Generate a new database migration
     rake run            # Run the application
     rake test           # Run tests
-
-## Installation
-    $ git clone git://github.com/ollie/reminder.git     # Clone this repo
-    $ cd reminder                                       # Get in
-    $ bundle install                                    # Install required RubyGems
-    $ rake db:create db:migrate                         # Create and migrate a SQLite3 database
-    $ cp lib/tasks/data.rake.sample lib/tasks/data.rake # Prepare your data file
-    # Edit your data file lib/tasks/data.rake
-    $ rake db:data:Load                                 # Load your data into database
-    $ rake run                                          # Run the application
 
 ## Running the application
     $ cd path/to/your/cloned/repo
