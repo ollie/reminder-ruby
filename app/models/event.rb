@@ -69,4 +69,8 @@ class Event < ActiveRecord::Base
     out += " (#{ Time.now.year - self.year })" if self.birthday?
     out
   end
+
+  def kindofdate
+    Date.new (self.year || Time.now.year), self.month, self.day
+  end
 end

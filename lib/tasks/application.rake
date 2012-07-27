@@ -1,3 +1,5 @@
+task :default => :run
+
 # Load application environment
 task :environment do
   require './config/environment'
