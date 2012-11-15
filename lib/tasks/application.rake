@@ -14,6 +14,7 @@ end
 
 desc 'Start the console'
 task :c => :environment do
+  require 'pry'
   verbose false do
     sh "pry -r ./config/environments/#{ Env }"
   end

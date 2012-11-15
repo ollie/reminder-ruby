@@ -1,12 +1,9 @@
 require File.expand_path('../boot', __FILE__)
-
-#require 'pry'
 require 'active_record'
-require 'terminal-table'
 
 module Reminder
   ENVIRONMENTS = [ 'development', 'production' ]
-  LOCALE = :en # :en, :cs
+  LOCALE = :cs # :en, :cs
 
   extend self
 
