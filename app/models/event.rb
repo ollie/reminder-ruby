@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
       puts "months:     [ #{ months.map     { |m| m.to_s.rjust(2, '0') }.join(', ') } ]"
     end
 
-    events = Event.where(:month => months).order('month DESC, day DESC').all
+    events = Event.where(:month => months).order('month DESC, day DESC')
 
     events.each do |event|
       modified_year = date.year
