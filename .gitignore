@@ -2,3 +2,4 @@
 /config/database.yml
 /db/*.sqlite
 /lib/tasks/data.rake
+/geeklet.sh
