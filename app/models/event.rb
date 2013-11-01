@@ -20,33 +20,47 @@ class Event < ActiveRecord::Base
     events = Event.where(:month => months).order('month DESC, day DESC')
 
     events.each do |event|
-      modified_year = date.year
+      event_year = date.year
 
-      #                                   vv <- now
+      # We need to set the event date for sorting. There is a problem though,
+      # we cannot simply set the current year for all events.
+      #
+      # We locate current month in the range and split it in two parts.
+      # We then take the event month and ask a few questions:
+      #
+      # If the month is in the left part and is higher than the current month,
+      # it means we are looking at the end of the previous year and we have
+      # to decrement the year by one.
+      #
+      # If, however, the month is in the right part and is lower than the current month,
+      # we are looking at the start of the next year and we have to increment it by one.
+      #
+      #                  event -> vv      vv <- current month
       # Watch out for this: [ 10, 11, 12, 01, 02, 03, 04 ]
       # Or that:            [ 09, 10, 11, 12, 01, 02, 03 ]
-      #                                   ^^
+      #                  current month -> ^^  ^^ <- event
       index_of_current_month = months.index date.month
-      first_half  = months[0..index_of_current_month]
-      second_half = months[index_of_current_month..-1]
 
-      if second_half.include?(event.month) && event.month < date.month
-        modified_year += 1
-      elsif first_half.include?(event.month) && event.month > date.month
-        modified_year -= 1
+      left_part  = months[0..index_of_current_month]
+      right_part = months[index_of_current_month..-1]
+
+      if right_part.include?(event.month) && event.month < date.month
+        event_year += 1
+      elsif left_part.include?(event.month) && event.month > date.month
+        event_year -= 1
       end
 
       # Debug
       if DEBUG
-        modified_date = Date.new modified_year, event.month, event.day
+        modified_date = Date.new event_year, event.month, event.day
         print date.year
-        print " #{ '%+d' % (modified_year - date.year) }"
+        print " #{ '%+d' % (event_year - date.year) }"
         print " #{ modified_date }"
         print " #{ event.inspect }"
         puts
       end
 
-      event.date = Date.new modified_year, event.month, event.day
+      event.date = Date.new event_year, event.month, event.day
     end
 
     events << Event.new( :date => date, :name => I18n.t('today'), :separators => true )

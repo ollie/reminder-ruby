@@ -3,7 +3,6 @@ class EventsController
     events = Event.near_events date
 
     table = Terminal::Table.new do |t|
-      now = false
       t << [ { :value => I18n.t('title'), :colspan => 2, :alignment => :center } ]
       t << :separator
       events.each_with_index do |event, index|
