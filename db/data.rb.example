@@ -1,0 +1,34 @@
+RAW_EVENTS = [
+    # Namedays
+    { show: true, month: 10, day: 25, nameday: true,  name: 'Someone'  },
+    { show: true, month: 6,  day: 12, nameday: true,  name: 'Somebody' },
+
+    # Birthdays
+    { show: true, month: 5,  day: 13, year: 1980, birthday: true, name: 'Someone'  },
+    { show: true, month: 1,  day: 25, year: 1950, birthday: true, name: 'Somebody' },
+
+    # Payments
+    { show: true, month: 5,  day: 13, payment: true, name: 'Payment 2' },
+    { show: true, month: 4,  day: 8,  payment: true, name: 'Payment 1' },
+]
+
+DB_KEYS = { show: :boolean, birthday: :boolean, nameday: :boolean, payment: :boolean, year: :int, month: :int, day: :int, name: :string }
+
+def events
+    RAW_EVENTS.map { |raw_event| fill_missing_keys raw_event }
+end
+
+def fill_missing_keys(raw_event)
+    event = {}
+
+    DB_KEYS.each do |key, type|
+        event[key] = case type
+        when :boolean
+            '1' if raw_event[key]
+        else
+            raw_event[key]
+        end
+    end
+
+    event
+end

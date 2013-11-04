@@ -1,7 +1,0 @@
-cs:
-  title: Narozeniny, svátky, platby…
-  birthday: narozeniny
-  nameday: svátek
-  payment: platba
-  today_is: Dnes je %{date}
-  today: Dnes

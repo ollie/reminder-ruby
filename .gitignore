@@ -1,5 +1,3 @@
-/.rvmrc
-/config/database.yml
-/db/*.sqlite
-/lib/tasks/data.rake
+*.sqlite
+/db/data.rb
 /geeklet.sh

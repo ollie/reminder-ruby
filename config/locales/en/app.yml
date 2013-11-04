@@ -1,7 +1,0 @@
-en:
-  title: Birthdays, namedays, payments…
-  birthday: birthday
-  nameday: nameday
-  payment: payment
-  today_is: Today is %{date}
-  today: Today

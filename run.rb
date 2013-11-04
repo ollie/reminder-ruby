@@ -1,5 +1,9 @@
-require './config/environment'
+#!/usr/bin/env ruby
 
-date = Date.today
-#date = Date.new 2012, 2, 2
-EventsController.new.list date
+require 'bundler'
+Bundler.require
+
+require File.expand_path('../app/boot', __FILE__)
+
+app = App.new
+app.run
